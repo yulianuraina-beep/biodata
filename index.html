@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Biodata Anak Teknik</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #4b0f1c, #800020, #a8324a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            width: 420px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #ffd6e0;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+        }
+
+        input:focus, textarea:focus {
+            box-shadow: 0 0 8px #ffb6c1;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            background: #ffb6c1;
+            color: #4b0f1c;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background: #ffc6d6;
+            transform: scale(1.03);
+        }
+
+        .hasil {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.1);
+            display: none;
+        }
+
+        .hasil h3 {
+            margin-top: 0;
+            color: #ffe4ec;
+        }
+
+        .hasil p {
+            margin: 6px 0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #ffd6e0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🌸 Biodata Anak Teknik 🌸</h2>
+
+    <form onsubmit="tampilkanData(event)">
+        <label>Nama Lengkap</label>
+        <input type="text" id="nama" required>
+
+        <label>Kelas</label>
+        <input type="text" id="kelas" required>
+
+        <label>Alamat</label>
+        <textarea id="alamat" required></textarea>
+
+        <label>Tanggal Lahir</label>
+        <input type="date" id="tgl_lahir" required>
+
+        <button type="submit">💖 Simpan Data</button>
+    </form>
+
+    <div class="hasil" id="hasil">
+        <h3>✨ Hasil Biodata ✨</h3>
+        <p><strong>Nama:</strong> <span id="outNama"></span></p>
+        <p><strong>Kelas:</strong> <span id="outKelas"></span></p>
+        <p><strong>Alamat:</strong> <span id="outAlamat"></span></p>
+        <p><strong>Tanggal Lahir:</strong> <span id="outTgl"></span></p>
+        <p><strong>Umur:</strong> <span id="outUmur"></span> Tahun</p>
+    </div>
+
+    <footer>
+        Made with 💕 by Anak Teknik
+    </footer>
+</div>
+
+<script>
+function tampilkanData(event){
+    event.preventDefault();
+
+    let nama = document.getElementById("nama").value;
+    let kelas = document.getElementById("kelas").value;
+    let alamat = document.getElementById("alamat").value;
+    let tgl = document.getElementById("tgl_lahir").value;
+
+    let today = new Date();
+    let birthDate = new Date(tgl);
+    let umur = today.getFullYear() - birthDate.getFullYear();
+
+    document.getElementById("outNama").innerText = nama;
+    document.getElementById("outKelas").innerText = kelas;
+    document.getElementById("outAlamat").innerText = alamat;
+    document.getElementById("outTgl").innerText = tgl;
+    document.getElementById("outUmur").innerText = umur;
+
+    document.getElementById("hasil").style.display = "block";
+}
+</script>
+
+</body>
+</html>
